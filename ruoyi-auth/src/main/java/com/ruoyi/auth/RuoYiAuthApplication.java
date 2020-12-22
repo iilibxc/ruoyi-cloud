@@ -6,15 +6,13 @@ import com.ruoyi.common.security.annotation.EnableRyFeignClients;
 
 /**
  * 认证授权中心
- * 
+ *
  * @author ruoyi
  */
 @EnableRyFeignClients
 @SpringCloudApplication
-public class RuoYiAuthApplication
-{
-    public static void main(String[] args)
-    {
+public class RuoYiAuthApplication {
+    public static void main(String[] args) {
         SpringApplication.run(RuoYiAuthApplication.class, args);
         System.out.println("(♥◠‿◠)ﾉﾞ  认证授权中心启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
                 " .-------.       ____     __        \n" +

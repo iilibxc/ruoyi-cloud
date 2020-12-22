@@ -3,6 +3,7 @@ package com.ruoyi.gateway.filter;
 import java.nio.CharBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicReference;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
@@ -21,12 +22,11 @@ import reactor.core.publisher.Mono;
 
 /**
  * 验证码过滤器
- * 
+ *
  * @author ruoyi
  */
 @Component
-public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object>
-{
+public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object> {
     private final static String AUTH_URL = "/auth/login";
 
     @Autowired
@@ -37,25 +37,20 @@ public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object>
     private static final String UUID = "uuid";
 
     @Override
-    public GatewayFilter apply(Object config)
-    {
+    public GatewayFilter apply(Object config) {
         return (exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
 
             // 非登录请求，不处理
-            if (!StringUtils.containsIgnoreCase(request.getURI().getPath(), AUTH_URL))
-            {
+            if (!StringUtils.containsIgnoreCase(request.getURI().getPath(), AUTH_URL)) {
                 return chain.filter(exchange);
             }
 
-            try
-            {
+            try {
                 String rspStr = resolveBodyFromRequest(request);
                 JSONObject obj = JSONObject.parseObject(rspStr);
                 validateCodeService.checkCapcha(obj.getString(CODE), obj.getString(UUID));
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 ServerHttpResponse response = exchange.getResponse();
                 response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
                 return exchange.getResponse().writeWith(
@@ -65,8 +60,7 @@ public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object>
         };
     }
 
-    private String resolveBodyFromRequest(ServerHttpRequest serverHttpRequest)
-    {
+    private String resolveBodyFromRequest(ServerHttpRequest serverHttpRequest) {
         // 获取请求体
         Flux<DataBuffer> body = serverHttpRequest.getBody();
         AtomicReference<String> bodyRef = new AtomicReference<>();
