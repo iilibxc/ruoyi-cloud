@@ -11,9 +11,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author ruoyi
  */
 @EnableDiscoveryClient
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-public class RuoYiGatewayApplication {
-    public static void main(String[] args) {
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+public class RuoYiGatewayApplication
+{
+    public static void main(String[] args)
+    {
         SpringApplication.run(RuoYiGatewayApplication.class, args);
         System.out.println("(♥◠‿◠)ﾉﾞ  若依网关启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
                 " .-------.       ____     __        \n" +

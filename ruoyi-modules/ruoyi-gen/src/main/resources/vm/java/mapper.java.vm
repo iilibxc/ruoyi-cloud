@@ -1,7 +1,6 @@
 package ${packageName}.mapper;
 
 import java.util.List;
-
 import ${packageName}.domain.${ClassName};
 
 /**
@@ -10,7 +9,8 @@ import ${packageName}.domain.${ClassName};
  * @author ${author}
  * @date ${datetime}
  */
-public interface ${ClassName}Mapper {
+public interface ${ClassName}Mapper
+{
     /**
      * 查询${functionName}
      *

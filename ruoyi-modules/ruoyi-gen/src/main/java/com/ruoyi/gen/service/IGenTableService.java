@@ -2,7 +2,6 @@ package com.ruoyi.gen.service;
 
 import java.util.List;
 import java.util.Map;
-
 import com.ruoyi.gen.domain.GenTable;
 
 /**
@@ -10,7 +9,8 @@ import com.ruoyi.gen.domain.GenTable;
  *
  * @author ruoyi
  */
-public interface IGenTableService {
+public interface IGenTableService
+{
     /**
      * 查询业务列表
      *
